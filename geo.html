@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GeoLocation Tutorial</title>
+    <style type="text/css">
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNJFk-4vGvcBq9dVKtrUNAvbECp6Y4A08&callback=initMap" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">  
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-md-offset-2" align="center">
+                <h1>GeoLocation Tutorial</h1>
+                <div style="text-align: left;margin-top: 30px;">
+                    <b>Latitude: </b><span id="latitude"></span><br>
+                    <b>Longitude: </b><span id="longitude"></span><br>
+                    <b>City: </b><span id="city"></span><br>
+                   
+                </div>
+                <div id="map">
+                    <iframe frameborder="0" style="border:0; width: 100%;height:300px;" src="" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function (p) {
+                    showUserDetails(p.coords.latitude, p.coords.longitude);
+                }, function (e) {
+                    ipLookup();
+                });
+            } else
+                ipLookup();
+        });
+
+        function showUserDetails(latitude, longitude, additional) {
+            var position = latitude + "," + longitude;
+
+            $("#latitude").text(latitude);
+            $("#longitude").text(longitude);
+
+            var url = "https://www.google.com/maps/embed/v1/view?center="+position+"&zoom=12&key=AIzaSyCNJFk-4vGvcBq9dVKtrUNAvbECp6Y4A08";
+            $("iframe").attr('src', url);
+
+           
+        }
+
+        function ipLookup() {
+            $.get('https://api.userinfo.io/userinfos', function (r) {
+               showUserDetails(r.position.latitude, r.position.longitude, r);
+            });
+        }
+    </script>
+</body>
+</html>
+
+
