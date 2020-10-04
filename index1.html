@@ -1,31 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nav-bar</title>
-    <link rel="stylesheet" href="q.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="app1.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  
+  <title>Registration Form</title>
 </head>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.21.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.21.1/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
 <body>
-    <header>
-        <div class="container">
-          <h1 class="logo">Astrosapiens</h1>
-            <nav>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><A HREF="account.html">Account</A><li></li>
-              <li><a href="#">Settings</a></li>
-              <li><A HREF="contact.html">Contact Us</A><li>
-                <li><A HREF="logout.html">Log out</A><li>
-            </ul>
-          </nav>
+    <div class="forms-out">
+        <div class="forms-in">
+          <div id="registration-page" class="hide">
+            <button id="show-login">Sign In</button>
+            <h3>Sign Up</h3>
+            Email <br />
+            <input type="email" id="registration-email" /><br />
+            Confirm Email <br />
+            <input
+            type="email"
+            id="registration-reemail"
+            autocomplete="disable"
+            /><br />
+            Password <br />
+            <input type="password" id="registration-password" /><br />
+            <center><button id="register">Sign Up</button></center>
+          </div>
+    
+          <div id="login-page">
+            <button id="show-register">Sign Up</button>
+            <h3>Sign In</h3>
+            Email <br />
+            <input type="email" id="login-email" /><br />
+            Password <br />
+            <input type="password" id="login-password" /><br />
+            <p id="forgot-password">Forgot Password</p>
+            <center><button id="login">Sign In</button></center>
+          </div>
+    
+          <div id="homepage" class="hide">
+            <button id="signout">Sign Out</button>
+            <h3>Logged In</h3>
+          </div>
         </div>
-       
-            </header>
-    <div id="mySidenav" class="sidenav">
-      <a href="#" id="about">Stellar Activities</a>
-      <a href="#" id="blog">Near You</a>
-      <a href="#" id="projects">Projects</a>
     </div>
+  <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+  <script src="app1.js"></script>
 </body>
+
 </html>
